@@ -14,7 +14,6 @@ import com.mthree.vendingmachine.dto.CoinType;
 import com.mthree.vendingmachine.dto.Item;
 import com.mthree.vendingmachine.ui.View;
 import java.math.BigDecimal;
-import java.util.Arrays;
 
 /**
  * 
