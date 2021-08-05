@@ -14,7 +14,7 @@ import java.math.RoundingMode;
  * 
  * @author Steven
  */
-public class BalanceDaoImplementation {
+public class BalanceDaoImplementation implements BalanceDao {
     private BigDecimal balance;
     
     public BalanceDaoImplementation() {
