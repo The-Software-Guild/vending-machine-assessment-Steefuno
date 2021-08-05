@@ -31,6 +31,8 @@ public class ManagerService {
         this.balanceDao = balanceDao;
         this.inventoryDao = inventoryDao;
         this.auditDao = auditDao;
+        
+        auditDao.log("START SESSION");
     }
     
     /**
@@ -42,7 +44,7 @@ public class ManagerService {
         BigDecimal newBalance;
         
         newBalance = balanceDao.addBalance(change);
-        auditDao.log("RECEIVED $" + newBalance);
+        auditDao.log("RECEIVED $" + change.total());
         
         return newBalance;
     }
@@ -102,7 +104,7 @@ public class ManagerService {
         
         change = balanceDao.close();
         balance = change.total();
-        auditDao.log("RETURNED $" + balance);
+        auditDao.log("RETURNED $" + balance + " AND ENDED SESSION");
         
         inventoryDao.close();
         auditDao.close();
