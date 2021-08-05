@@ -1,7 +1,7 @@
 /*
  * @author Steven Nguyen
  * @email: steven.686295@gmail.com
- * @date: 
+ * @date: 05 Aug 2021
  */
 
 package com.mthree.vendingmachine.dao;
@@ -10,6 +10,6 @@ package com.mthree.vendingmachine.dao;
  * 
  * @author Steven
  */
-public class AuditDao {
+public interface AuditDao {
 
 }
