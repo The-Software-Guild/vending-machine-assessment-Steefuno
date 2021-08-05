@@ -11,5 +11,14 @@ package com.mthree.vendingmachine.dao;
  * @author Steven
  */
 public interface AuditDao {
-
+    /**
+     * Logs a message in the audit
+     * @param message the message to log
+     */
+    public void log(String message);
+    
+    /**
+     * Closes the audit log
+     */
+    public void close();
 }
