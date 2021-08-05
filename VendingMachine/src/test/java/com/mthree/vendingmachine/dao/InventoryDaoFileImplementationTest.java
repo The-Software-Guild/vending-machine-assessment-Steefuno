@@ -37,59 +37,6 @@ public class InventoryDaoFileImplementationTest {
     @AfterEach
     public void tearDown() {
     }
-
-    /**
-     * Test of removeItem method, of class InventoryDaoFileImplementation.
-     */
-    @Test
-    public void testRemoveItem() throws Exception {
-        System.out.println("removeItem");
-        String itemName = "";
-        InventoryDaoFileImplementation instance = null;
-        instance.removeItem(itemName);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getAllItems method, of class InventoryDaoFileImplementation.
-     */
-    @Test
-    public void testGetAllItems() {
-        System.out.println("getAllItems");
-        InventoryDaoFileImplementation instance = null;
-        String[] expResult = null;
-        String[] result = instance.getAllItems();
-        assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getItem method, of class InventoryDaoFileImplementation.
-     */
-    @Test
-    public void testGetItem() {
-        System.out.println("getItem");
-        String itemName = "";
-        InventoryDaoFileImplementation instance = null;
-        Item expResult = null;
-        Item result = instance.getItem(itemName);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of close method, of class InventoryDaoFileImplementation.
-     */
-    @Test
-    public void testClose() {
-        System.out.println("close");
-        InventoryDaoFileImplementation instance = null;
-        instance.close();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    
     
 }
