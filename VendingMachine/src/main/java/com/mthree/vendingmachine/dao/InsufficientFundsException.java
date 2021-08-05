@@ -10,6 +10,6 @@ package com.mthree.vendingmachine.dao;
  * 
  * @author Steven
  */
-public class InsufficientFundsException {
+public class InsufficientFundsException extends Exception {
 
 }
