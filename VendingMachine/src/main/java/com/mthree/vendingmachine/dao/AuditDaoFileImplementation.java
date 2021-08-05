@@ -49,7 +49,7 @@ public class AuditDaoFileImplementation implements AuditDao {
                 new FileWriter(path, true)
             );
         } catch (Exception ex) {
-            System.out.println("Failed to write to file");
+            System.out.println("Failed to write to audit file");
             System.exit(-1);
             return;
         }

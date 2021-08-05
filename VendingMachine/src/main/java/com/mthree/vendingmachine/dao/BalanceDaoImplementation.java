@@ -18,8 +18,7 @@ public class BalanceDaoImplementation implements BalanceDao {
     private BigDecimal balance;
     
     public BalanceDaoImplementation() {
-        balance = new BigDecimal(0);
-        balance.setScale(2, RoundingMode.HALF_UP);
+        balance = new BigDecimal(0).setScale(2, RoundingMode.HALF_UP);
     }
     
     /**

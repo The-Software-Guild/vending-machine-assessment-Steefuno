@@ -7,8 +7,9 @@
 package com.mthree.vendingmachine.controller;
 
 import com.mthree.vendingmachine.dao.InsufficientFundsException;
+import com.mthree.vendingmachine.dao.ItemNotFoundException;
 import com.mthree.vendingmachine.dao.ManagerService;
-import com.mthree.vendingmachine.dao.NoItemInventoryException;
+import com.mthree.vendingmachine.dto.NoItemInventoryException;
 import com.mthree.vendingmachine.dto.Change;
 import com.mthree.vendingmachine.dto.CoinType;
 import com.mthree.vendingmachine.dto.Item;
@@ -43,13 +44,13 @@ public class Controller {
         MainMenu: do {
             menuSelection = promptMainMenu();
             switch(menuSelection) {
-                case MainMenuOption.BUY_ITEM:
+                case BUY_ITEM:
                     purchaseItem();
                     break;
-                case MainMenuOption.ADD_MONEY:
+                case ADD_MONEY:
                     addBalance();
                     break;
-                case MainMenuOption.EXIT:
+                case EXIT:
                     break MainMenu;
             }
         } while (true);
@@ -76,14 +77,14 @@ public class Controller {
                 "\nEXIT - exit the app"
             );
             
-            switch(input) {
-                case "BUY":
+            switch(input.toLowerCase()) {
+                case "buy":
                     menuSelection = MainMenuOption.BUY_ITEM;
                     break;
-                case "ADD":
+                case "add":
                     menuSelection = MainMenuOption.ADD_MONEY;
                     break;
-                case "EXIT":
+                case "exit":
                     menuSelection = MainMenuOption.EXIT;
                     break;
             }
@@ -103,7 +104,7 @@ public class Controller {
         
         // Prompts the user for each coin type
         for (int i = 0; i < coinTypes.length; i++) {
-            coinsInserted[i] = promptNaturalNumber("How many " + coinTypes[i].name() + " will you insert?");
+            coinsInserted[i] = view.promptNaturalNumber("How many " + coinTypes[i].name() + " will you insert?");
         }
         
         // Adds the change
@@ -138,7 +139,7 @@ public class Controller {
             view.say("\nThis item is not available for purchase.");
             return;
         } catch (InsufficientFundsException e) {
-            view.say("\nYou do not have enough balance for this item.");
+            view.say("\nYou do not have enough balance for this item. You have $" + balance + ".");
             return;
         } catch (ItemNotFoundException e) {
             view.say("\nThis item does not exist.");
@@ -176,6 +177,11 @@ public class Controller {
         Change change;
         
         change = manager.close();
-        view.say("Thank you for using our vending machine. Your change is " + change);
+        view.say("Thank you for using our vending machine. Your change is " +
+            "\n\t" + change.get(CoinType.QUARTER) + " Quarters" +
+            "\n\t" + change.get(CoinType.DIME) + " Dimes" +
+            "\n\t" + change.get(CoinType.NICKEL) + " Nickels" +
+            "\n\t" + change.get(CoinType.PENNY) + " Pennies."
+        );
     }
 }

@@ -6,6 +6,7 @@
 
 package com.mthree.vendingmachine.dao;
 
+import com.mthree.vendingmachine.dto.NoItemInventoryException;
 import com.mthree.vendingmachine.dto.Item;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -90,7 +91,7 @@ public class InventoryDaoFileImplementation implements InventoryDao {
                 new FileWriter(path)
             );
         } catch (Exception ex) {
-            System.out.println("Failed to write to file");
+            System.out.println("Failed to write to inventory file");
             System.exit(-1);
             return;
         }
@@ -122,7 +123,7 @@ public class InventoryDaoFileImplementation implements InventoryDao {
                 )
             );
         } catch (Exception ex) {
-            System.out.println("Failed to open file");
+            System.out.println("Failed to open inventory file");
             System.exit(-1);
             return;
         }

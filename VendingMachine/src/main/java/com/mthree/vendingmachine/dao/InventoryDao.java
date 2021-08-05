@@ -6,6 +6,7 @@
 
 package com.mthree.vendingmachine.dao;
 
+import com.mthree.vendingmachine.dto.NoItemInventoryException;
 import com.mthree.vendingmachine.dto.Item;
 
 /**

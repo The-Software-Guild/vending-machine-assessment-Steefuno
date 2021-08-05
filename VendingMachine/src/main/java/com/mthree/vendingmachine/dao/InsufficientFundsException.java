@@ -1,4 +1,4 @@
-05 Aug 2021/*
+/*
  * @author Steven Nguyen
  * @email: steven.686295@gmail.com
  * @date: 05 Aug 2021

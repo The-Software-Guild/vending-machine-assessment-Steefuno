@@ -4,7 +4,7 @@
  * @date: 05 Aug 2021
  */
 
-package com.mthree.vendingmachine.dao;
+package com.mthree.vendingmachine.dto;
 
 /**
  * 

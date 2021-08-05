@@ -6,6 +6,7 @@
 
 package com.mthree.vendingmachine.dao;
 
+import com.mthree.vendingmachine.dto.NoItemInventoryException;
 import com.mthree.vendingmachine.dto.Change;
 import com.mthree.vendingmachine.dto.Item;
 import java.math.BigDecimal;
@@ -55,7 +56,7 @@ public class ManagerService {
      * @param itemName the name of the item to purchase
      * @return the new balance
      */
-    public BigDecimal purchaseItem(String itemName) throws ItemNotFoundException, NoItemInventoryException {
+    public BigDecimal purchaseItem(String itemName) throws ItemNotFoundException, NoItemInventoryException, InsufficientFundsException {
         BigDecimal cost, newBalance;
         Item item;
         
