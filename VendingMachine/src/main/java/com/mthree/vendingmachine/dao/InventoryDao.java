@@ -17,7 +17,7 @@ public interface InventoryDao {
      * Removes one of an item from the inventory
      * @param itemName the name of the item to remove
      */
-    public void removeItem(String itemName);
+    public void removeItem(String itemName) throws ItemNotFoundException, NoItemInventoryException;
     
     /**
      * Gets a String[] of all item names

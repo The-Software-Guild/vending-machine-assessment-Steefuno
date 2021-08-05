@@ -140,6 +140,9 @@ public class Controller {
         } catch (InsufficientFundsException e) {
             view.say("\nYou do not have enough balance for this item.");
             return;
+        } catch (ItemNotFoundException e) {
+            view.say("\nThis item does not exist.");
+            return;
         }
         
         view.say("\nPurchased. Your new balance is $" + balance + ".");

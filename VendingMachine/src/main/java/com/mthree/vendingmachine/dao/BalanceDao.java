@@ -19,24 +19,25 @@ public interface BalanceDao {
      * @param change the set of coins to add
      * @return the new balance
      */
-    BigDecimal addBalance(Change change);
+    public BigDecimal addBalance(Change change);
     
     /**
      * Removes from the balance
      * @param deduction the BigDecimal to remove from the balance
      * @return the new balance
+     * @throws InsufficientFundsException
      */
-    BigDecimal deductBalance(BigDecimal deduction);
+    public BigDecimal deductBalance(BigDecimal deduction) throws InsufficientFundsException;
     
     /**
      * Gets the balance
      * @return the balance
      */
-    BigDecimal getBalance();
+    public BigDecimal getBalance();
     
     /**
      * Converts the balance to change
      * @return the change
      */
-    Change close();
+    public Change close();
 }

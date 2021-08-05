@@ -40,7 +40,7 @@ public class ManagerService {
     public BigDecimal addBalance(Change change) {
         BigDecimal newBalance;
         
-        newBalance = balanceDao.addBalance(change);;
+        newBalance = balanceDao.addBalance(change);
         auditDao.log("RECEIVED $" + newBalance);
         
         return newBalance;
@@ -55,15 +55,12 @@ public class ManagerService {
      * @param itemName the name of the item to purchase
      * @return the new balance
      */
-    public BigDecimal purchaseItem(String itemName) throws ItemNotFoundException {
+    public BigDecimal purchaseItem(String itemName) throws ItemNotFoundException, NoItemInventoryException {
         BigDecimal cost, newBalance;
         Item item;
         
         item = inventoryDao.getItem(itemName);
-        if (item == null) {
-            throw new ItemNotFoundException();
-        }
-        item.takeOne();
+        inventoryDao.removeItem(itemName);
         
         cost = item.getCost();
         newBalance = balanceDao.deductBalance(cost);
@@ -85,10 +82,19 @@ public class ManagerService {
         return itemNames;
     }
     
+    /**
+     * Gets an item from the item name
+     * @param itemName the name of the item
+     * @return the item
+     */
     public Item getItem(String itemName) {
         return inventoryDao.getItem(itemName);
     }
     
+    /**
+     * Closes the manager and all associated DAOs
+     * @return the change from the balanceDao
+     */
     public Change close() {
         BigDecimal balance;
         Change change;

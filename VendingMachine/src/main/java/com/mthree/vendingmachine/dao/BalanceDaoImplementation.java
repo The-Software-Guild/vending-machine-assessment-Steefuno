@@ -27,7 +27,8 @@ public class BalanceDaoImplementation implements BalanceDao {
      * @param change the set of coins to add
      * @return the new balance
      */
-    BigDecimal addBalance(Change change) {
+    @Override
+    public BigDecimal addBalance(Change change) {
         BigDecimal balanceToAdd, newBalance;
         
         balanceToAdd = change.total();
@@ -43,7 +44,8 @@ public class BalanceDaoImplementation implements BalanceDao {
      * @return the new balance
      * @throws InsifficientFundsException
      */
-    BigDecimal deductBalance(BigDecimal deduction) throws InsufficientFundsException {
+    @Override
+    public BigDecimal deductBalance(BigDecimal deduction) throws InsufficientFundsException {
         BigDecimal newBalance;
         
         newBalance = balance.subtract(deduction);
@@ -59,7 +61,8 @@ public class BalanceDaoImplementation implements BalanceDao {
      * Gets the balance
      * @return the balance
      */
-    BigDecimal getBalance() {
+    @Override
+    public BigDecimal getBalance() {
         return balance;
     }
     
@@ -67,7 +70,8 @@ public class BalanceDaoImplementation implements BalanceDao {
      * Converts the balance to change
      * @return the change
      */
-    Change close() {
+    @Override
+    public Change close() {
         Change change;
         
         change = Change.getOptimalChange(balance);
