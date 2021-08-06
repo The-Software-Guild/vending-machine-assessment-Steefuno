@@ -15,6 +15,8 @@ import com.mthree.vendingmachine.dto.CoinType;
 import com.mthree.vendingmachine.dto.Item;
 import com.mthree.vendingmachine.ui.View;
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 
@@ -153,21 +155,20 @@ public class Controller {
      * Displays all items in the inventory
      */
     private void displayAllItems() {
-        String[] itemNames;
-        String output;
+        List<String> itemNames;
 
-        itemNames = manager.getAllItems();
+        itemNames = Arrays.asList(manager.getAllItems());
         
         // Generate the table of items
-        output = "====================";
-        for (var name: itemNames) {
-            Item item;
-            
-            item = manager.getItem(name);
-            output += "\n" + item.getStock() + "pc\t$" + item.getCost() + "\t" + item.getName();
-        }
-        
-        view.say(output);
+        view.say("========================================");
+        itemNames.stream()
+            .forEach((name) -> {
+                Item item;
+                
+                item = manager.getItem(name);
+                view.say(item.getStock() + "pc\t$" + item.getCost() + "\t" + item.getName());
+            })
+        ;
     }
     
     /**
