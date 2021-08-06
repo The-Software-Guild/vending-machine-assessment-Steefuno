@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class InventoryDaoFileImplementationTest {
     private InventoryDaoFileImplementation inventoryDao;
-    private static String path = "./TestInventory";
+    private static String PATH = "./TestInventory";
     
     public InventoryDaoFileImplementationTest() {
         inventoryDao = null;
@@ -42,21 +42,21 @@ public class InventoryDaoFileImplementationTest {
     @AfterAll
     public static void tearDownClass() throws FileNotFoundException, IOException {
         PrintWriter out = new PrintWriter(
-            new FileWriter(path)
+            new FileWriter(PATH)
         );
     }
     
     @BeforeEach
     public void setUp() throws FileNotFoundException, IOException {
         PrintWriter out = new PrintWriter(
-            new FileWriter(path)
+            new FileWriter(PATH)
         );
         
         out.println("Item1::1.00::1");
         out.println("Item2::1.01::2");
         out.close();
         
-        inventoryDao = new InventoryDaoFileImplementation(path);
+        inventoryDao = new InventoryDaoFileImplementation(PATH);
     }
     
     @AfterEach
@@ -261,7 +261,7 @@ public class InventoryDaoFileImplementationTest {
         
         scanner = new Scanner(
             new BufferedReader(
-                new FileReader(path)
+                new FileReader(PATH)
             )
         );
         
